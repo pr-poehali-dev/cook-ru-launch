@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -35,47 +37,42 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Minecraft colors */
+    --minecraft-grass: 124 63% 65%;
+    --minecraft-dark: 120 40% 20%;
+    --minecraft-light: 120 20% 90%;
+    --minecraft-green: 120 60% 50%;
+    --minecraft-border: 120 40% 30%;
+    --minecraft-gray: 0 0% 60%;
+    --minecraft-blue: 210 80% 60%;
+    --minecraft-purple: 270 60% 60%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -97,5 +94,187 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .bg-minecraft-grass {
+    background-color: hsl(var(--minecraft-grass));
+  }
+
+  .bg-minecraft-dark {
+    background-color: hsl(var(--minecraft-dark));
+  }
+
+  .bg-minecraft-light {
+    background-color: hsl(var(--minecraft-light));
+  }
+
+  .bg-minecraft-green {
+    background-color: hsl(var(--minecraft-green));
+  }
+
+  .bg-minecraft-blue {
+    background-color: hsl(var(--minecraft-blue));
+  }
+
+  .text-minecraft-dark {
+    color: hsl(var(--minecraft-dark));
+  }
+
+  .text-minecraft-gray {
+    color: hsl(var(--minecraft-gray));
+  }
+
+  .text-minecraft-green {
+    color: hsl(var(--minecraft-green));
+  }
+
+  .text-minecraft-blue {
+    color: hsl(var(--minecraft-blue));
+  }
+
+  .text-minecraft-purple {
+    color: hsl(var(--minecraft-purple));
+  }
+
+  .border-minecraft-border {
+    border-color: hsl(var(--minecraft-border));
+  }
+
+  .minecraft-text {
+    font-family: "Press Start 2P", monospace;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .minecraft-block {
+    border: 3px solid;
+    border-top-color: rgba(255, 255, 255, 0.4);
+    border-left-color: rgba(255, 255, 255, 0.4);
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    border-right-color: rgba(0, 0, 0, 0.4);
+    image-rendering: pixelated;
+  }
+
+  .minecraft-btn {
+    @apply flex items-center space-x-2 px-4 py-2 font-bold border-2 transition-all duration-200;
+    border-top-color: rgba(255, 255, 255, 0.4);
+    border-left-color: rgba(255, 255, 255, 0.4);
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    border-right-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .minecraft-btn-normal {
+    @apply bg-gray-400 text-gray-800 hover:bg-gray-300;
+  }
+
+  .minecraft-btn-active {
+    @apply bg-minecraft-green text-white;
+  }
+
+  .minecraft-btn-send {
+    @apply bg-minecraft-green text-white hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .minecraft-container {
+    @apply rounded-lg border-4 border-minecraft-dark shadow-lg overflow-hidden;
+    border-top-color: rgba(255, 255, 255, 0.3);
+    border-left-color: rgba(255, 255, 255, 0.3);
+    border-bottom-color: rgba(0, 0, 0, 0.3);
+    border-right-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .minecraft-panel-header {
+    @apply bg-minecraft-dark text-white p-4 border-b-2 border-minecraft-border;
+  }
+
+  .minecraft-message {
+    @apply hover:bg-white/50 rounded p-2 transition-colors;
+  }
+
+  .minecraft-avatar {
+    @apply w-10 h-10 rounded-full bg-minecraft-green flex items-center justify-center text-lg minecraft-block;
+  }
+
+  .minecraft-username {
+    @apply minecraft-text text-xs;
+  }
+
+  .minecraft-message-bubble {
+    @apply bg-white rounded-lg p-3 border-2 border-gray-300 shadow-sm;
+    border-top-color: rgba(255, 255, 255, 0.8);
+    border-left-color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    border-right-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .minecraft-input-container {
+    @apply bg-minecraft-dark p-4 border-t-4 border-minecraft-border space-y-3;
+  }
+
+  .minecraft-emoji-panel {
+    @apply flex space-x-2 overflow-x-auto pb-2;
+  }
+
+  .minecraft-emoji-btn {
+    @apply w-10 h-10 flex items-center justify-center rounded border-2 bg-white hover:bg-gray-100 transition-colors minecraft-block;
+  }
+
+  .minecraft-input {
+    @apply px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-minecraft-green focus:outline-none minecraft-block;
+  }
+
+  .minecraft-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--minecraft-green)) transparent;
+  }
+
+  .minecraft-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .minecraft-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .minecraft-scroll::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--minecraft-green));
+    border-radius: 4px;
+  }
+
+  .minecraft-hero {
+    @apply py-12;
+  }
+
+  .minecraft-logo {
+    @apply space-y-4;
+  }
+
+  .minecraft-feature-card {
+    @apply minecraft-container bg-white p-6 hover:scale-105 transition-transform duration-200 block;
+  }
+
+  .minecraft-feature-icon {
+    @apply w-16 h-16 rounded-full flex items-center justify-center text-white mb-4 mx-auto minecraft-block;
+  }
+
+  .minecraft-stats-grid {
+    @apply grid grid-cols-3 gap-4 p-6;
+  }
+
+  .minecraft-profile-avatar {
+    @apply w-24 h-24 rounded-full bg-minecraft-green flex items-center justify-center text-4xl minecraft-block mx-auto mb-4;
+  }
+
+  .minecraft-stat-card {
+    @apply flex items-center space-x-4 p-4;
+  }
+
+  .minecraft-stat-icon {
+    @apply w-12 h-12 rounded-full bg-minecraft-green text-white flex items-center justify-center minecraft-block;
+  }
+
+  .minecraft-achievement {
+    @apply bg-white p-4 rounded-lg border-2 border-gray-300 minecraft-block hover:bg-gray-50 transition-colors;
   }
 }
