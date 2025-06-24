@@ -142,6 +142,22 @@
     border-color: hsl(var(--minecraft-border));
   }
 
+  .border-minecraft-dark {
+    border-color: hsl(var(--minecraft-dark));
+  }
+
+  .border-minecraft-green {
+    border-color: hsl(var(--minecraft-green));
+  }
+
+  .border-minecraft-blue {
+    border-color: hsl(var(--minecraft-blue));
+  }
+
+  .border-minecraft-purple {
+    border-color: hsl(var(--minecraft-purple));
+  }
+
   .minecraft-text {
     font-family: "Press Start 2P", monospace;
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
